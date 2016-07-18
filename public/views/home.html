@@ -1,0 +1,161 @@
+<style type="text/css">
+body {
+	background-color: #3b3b3f;
+}
+.header {
+	height:130px;
+	position:absolute;
+	width:100%;
+	z-index:2;
+	clear:none;
+	text-align:center;
+	padding:10px;
+	top: 0;
+	margin-top: 15%;
+}	
+.title {
+	text-transform: uppercase;
+	color: white;
+	font-size: 45px;
+	text-shadow: 1px 1px 10px #000;
+}
+p {
+	color: white;
+}
+
+#navbar {
+	position: absolute;
+	background-color: rgba(0,0,0,0);
+	z-index: 20;
+}
+
+.px-app-nav-0 a.selected.px-app-nav, .px-app-nav-0 a.selected.px-app-nav:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+.px-app-nav-0 a.px-app-nav:hover {
+	background-color: rgba(0,0,0,0.3);
+        -webkit-transition-delay:0.1s;     
+        -moz-transition-delay:0.1s; 
+        -ms-transition-delay:0.1s;     
+        -o-transition-delay:0.1s;     
+        transition-delay:0.1s;     
+}
+
+.bg_container {
+	position: relative;
+	display: inline-block;
+	z-index: 2;
+	width: 100%;
+}
+
+.bg_img {
+	width: 100%;
+	max-height: 760px;
+}
+
+.bg_pattern { 
+	position: absolute; 
+	opacity: 0.8; 
+	left: 0px; 
+	top: 0px; 
+	width: 100%; 
+	height: 100%; 
+	max-height: 760px;
+	background-color: rgba(0,0,0,0.6);
+}
+
+.button-view-now {
+	border-color: white;
+	border-width: 1px;
+	border-style: solid;
+	width: 100px;
+	padding: 0.4em;
+	margin: auto;
+	background-color: rgba(0,0,0,0.3);
+}
+p.button-view:hover {
+	background-color: rgba(0,0,0,0.3);
+	text-decoration: none;
+	border-color: rgba(0,0,0,0.3);
+	border-width: 1px;
+	border-style: solid;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.popup-modal {
+	top: 0;
+	height : 300px;
+    background-color: white;
+    z-index: 9999999;
+    width: 50%;
+    position: absolute;
+    top: 33%;
+    left: 24%;
+    border-radius: 3px;
+}
+.popup-overlay {
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 21;
+	top: 0;
+	left: 0;
+}
+.popup-text {
+	color: black;
+	float: none;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+}
+</style>
+
+
+<div ng-controller="HomeCtrl">
+	<div class="bg_container">
+		<img src="/images/solar-panels.jpg" class="bg_img">
+		<div class="bg_pattern"></div>
+	</div>
+	<div class="header">
+		<h1 class="title">Titan Power App</h1>
+		<p>Analyze the power consumption of the California State University Campus</p>
+		<p style="padding-top: 10px;"></p>
+		<p class="button-view-now button-view"><a href="/dashboards" style="color: white">view app</a></p>
+	</div>
+	<div style="display:none" id="popup">
+		<div class="popup-overlay"></div>
+		<div class="popup-modal">
+			<div style="text-align: center; padding-top: 12%">
+				<h1 style="color: black;">Please sign in to access content</h1>
+				<px-login class="popup-text"></px-login>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    if(localStorage.getItem('popState') != 'shown'){
+        $("#popup").delay(1000).fadeIn();
+        localStorage.setItem('popState','shown')
+    }
+
+
+});
+</script>

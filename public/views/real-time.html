@@ -1,0 +1,28 @@
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script>
+$(document).ready(function() {
+setInterval(function(){
+	var table = document.querySelector("#test-chart");
+	console.log("refreshing");
+   	table.refreshAllSeries(); 
+ }, 5000);
+});
+</script>
+
+<br><br><br><br><br>
+<div id="realtime" ng-controller="TableCtrl">
+<px-card>
+
+<input type="button" name="Series-Button" value="Start Streaming" ng-click="start()"/>
+
+<px-chart id="test-chart">
+	<px-chart-series-line id="Trigen Real Time" data={{solarData}}>
+	</px-chart-series-line>
+</px-chart>
+
+</px-card>
+</div>
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>California State University, Fullerton - Ecomagination Hackathon Application</title>
+    <base href="/">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" type="image/png" href="images/csuf-seal.png">
+
+    <script type='application/javascript' src='bower_components/px/dist/px.min.js'></script>
+
+    <!-- Just needed for IE -->
+    <script src="bower_components/es6-promise/dist/es6-promise.min.js"></script>
+
+    <!-- Requires Webcomponents.js polyfill is provided by the page for browsers that don't support html imports -->
+    <script type='application/javascript' src="bower_components/echarts/dist/echarts.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="polymer-loader.vulcanized.html">
+	
+</head>
+
+<style type="text/css">
+#navbar {
+  position: fixed; /*absolute*/
+  z-index: 99;
+  width: 100%;
+  opacity: 1;
+  top: 0;
+}
+
+.float-right {
+	float: right;
+}
+	
+.list-inline {
+	position: absolute;
+}
+
+.viewport:not([style-scope]):not(.style-scope) {
+	width: 100%;
+}
+</style>
+	
+<body class="app" data-ng-controller="MainCtrl">
+	    <header role="banner" id="navbar">
+        <div class="viewport">
+            <a href="/home">
+				<h1 class="float--left" style="text-transform: uppercase;">
+					Team Titans
+				</h1>
+			</a>
+			<px-login style="padding-left: 1em; padding-right: 3em;"></px-login>
+			<px-app-nav nav-items="{{App.tabs}}" path-prefix="/" path-key="state" >
+			</px-app-nav>
+			
+        </div>
+    </header>
+
+        <div class="content-wrapper">
+            <main class="layout__item" role="main">
+              <!-- MAIN CONTENT -->
+              <section class="u-1/1" role="region" ui-view>
+                <!-- This is the container where the tabs will render -->
+              </section>
+            </main>
+        </div>
+
+<footer class="flex flex--middle" role="contentinfo" style="background-color: #3b3b3f">
+		<div class="viewport">
+            <nav role="navigation">
+                <ul class="list-inline">
+                    <li class="u-mh-">
+                        <a href="http://www.ge.com/privacy" target="_blank">Privacy</a>
+                    </li>
+                    <li class="u-mh-">
+                        <a href="http://www.ge.com/terms" target="_blank">Terms</a>
+                    </li>
+					<li class="u-mh-">
+                        <a href="http://gecsu.ecs.fullerton.edu/" target="_blank">GE CSU Innovation</a>
+                    </li>
+                </ul>
+				<div class="float-right">©2016 General Electric</div>						  
+            </nav>
+		</div>
+    </footer>
+</body>
+
+<script>
+    // IE11 workaround: We can't rely on IE's load order for scripts that are loaded outside of require.js (might
+    //  be an issue with the web components polyfill), so we wait for the HTMLImportsLoaded event to ensure our
+    //  web components' scripts have loaded.
+    window.addEventListener('HTMLImportsLoaded', function(e) {
+        var elScript = document.createElement('script');
+        elScript.setAttribute('src', 'bower_components/requirejs/require.js');
+        elScript.setAttribute('data-main', 'scripts/bootstrapper.js');
+        document.getElementsByTagName('body')[0].appendChild(elScript);
+    });
+</script>
+</html>
